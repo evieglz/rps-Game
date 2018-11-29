@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RPS game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- main CSS -->
+<link rel="stylesheet" type="text/css" media="screen" href="./assets/style.css" />
+
+<!-- font color -->
+<link href="https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope|Concert+One|Patua+One|Pompiere" rel="stylesheet">
+
+<!-- materiaize icon -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div  class="section">
+                <h1><i class="material-icons">games</i>Rock <i class="material-icons">games</i> Paper <i class="material-icons">games</i>  
+                Scissors<i class="material-icons">games</i>
+                <hr 4/>
+            </h1>
+            <h3 id= "info-main"> Challenge the computer to a Rock, Paper, Scissors game</h3>
+            <h3 id="info">Click on either r, s, or p to start the game!</h3>
+            <hr 4/>
+        </div>
+        <div cass="content">
+            <p>User's guess: <span id="userGuess"></span></p>
+            <p>Computer's guess: <span id="compGuess"></span></p>
+            <p>Wins: <span id="wins"></span></p>
+            <p>Losses <span id="losses"></span></p>
+            <p>Ties: <span id="ties"></span></p>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var wins=0;
+    var losses = 0;
+    var ties = 0;
+
+    var choices = ["r", "s","p"];
+
+    console.log("choices");
+
+    document.onkeyup = function(event){
+        var userGuess = event.key;console.log(userGuess);
+        var compGuess = choices [Math.floor (Math.random()* choices.length)]; console.log(compGuess);
+
+    //create an if statement using logical operators for the wins and losses
+
+    if ((userGuess==="r") || (userGuess === "p") || (userGuess === "s")) {
+        if ((userGuess === "r") && (compGuess ==="s")){
+            wins++;
+        }
+        if ((userGuess === "r") && (compGuess ==="p")){
+            losses++;
+        }
+        if((userGuess === "s") && (compGuess === "r")){
+            losses++;
+        }
+        if((userGuess === "s") && (compGuess === "p")){
+            wins++;
+        }
+        if((userGuess === "p")&& (compGuess === "r")){
+            wins++;
+        }
+        if((userGuess === "p")&& (compGuess === "s")){
+            loosess++;
+        }
+        else if (userGuess === compGuess){
+            ties++;
+        }
+
+        // add info to HTML documentation
+
+        document.querySelector("#userGuess").innerHTML = userGuess;
+        document.querySelector("#compGuess").innerHTML = compGuess;
+        document.querySelector("#wins").innerHTML = wins;
+        document.querySelector("#losses").innerHTML = losses;
+        document.querySelector("#ties").innerHTML = ties;
+    }
+};
+
+    </script>
+</body>
+</html>
